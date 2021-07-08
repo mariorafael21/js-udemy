@@ -28,9 +28,9 @@ this.print = function(){
 
 var pilha = new Stack()
 
-pilha.push(1)
-pilha.push(1.5)
-pilha.push(2)
+pilha.push('alvorada 10:30')
+pilha.push('pref 12:30')
+pilha.push('preferida 14:30')
 
 console.log(" o ultimo item é: " + pilha.peek())
 console.log(" o tamanho da pilha é: " + pilha.size())
