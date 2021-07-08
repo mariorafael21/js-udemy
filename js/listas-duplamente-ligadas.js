@@ -70,7 +70,34 @@ function DoublyLinkedList(){
     }
 
     this.removeAt = function(position){
-        
+        if(position > - 1 && position < length){
+            var current = head,
+            previus,
+            index = 0
+            if(position === 0){
+                head = current.next
+                if(length === 1){
+                    tail = null
+                }else{
+                    head.prev = null
+                }
+            }else if(position === length -1){
+                current = tail
+                tail = current.prev
+                tail.next = null
+            }else{
+                while(index++ < position){
+                    previus = current
+                    current = current.next   
+                }
+                previus.next = current.next
+                current.next.prev = previus
+            }    
+            length--
+            return current.element
+        }else{
+            return null
+        }
     }
 
     this.remove = function(element){
@@ -135,5 +162,12 @@ dll.append('Jose')
 dll.append('Maria')
 dll.insert(0,'Carlos')
 dll.insert(4,'Lucas')
-dll.insert(2,'Ana')
+dll.insert(2,'Marcos')
+dll.print()
+
+dll.removeAt(0)
+dll.print()
+dll.removeAt(4)
+dll.print()
+dll.removeAt(2)
 dll.print()
