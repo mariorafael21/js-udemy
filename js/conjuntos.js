@@ -50,24 +50,70 @@ function Set(){
         }
         return unionSet
     }
+
+    this.intersection = function(otherSet){
+        var intersectionSet = new Set(),
+        values = this.values()
+
+        for(var i = 0; i < values.length; i++){
+            if(otherSet.has(values[i])){
+                intersectionSet.add(values[i])
+            }
+        }
+        return intersectionSet
+    }
+
+    this.diference = function(otherSet){
+        var diferenceSet = new Set(),
+        values = this.values()
+
+        for(var i = 0; i < values.length; i++){
+            if(!otherSet.has(values[i])){
+                diferenceSet.add(values[i])
+            }
+        }
+        return diferenceSet
+    }
+
+    this.subset = function(otherSet){
+        if(this.size() > otherSet.size()){
+            return false
+        }else{
+            var values = this.values()
+
+            for( var i = 0; i < values.length; i++){
+                if(!otherSet.has(values[i])){
+                    return false
+                }
+            }
+            return true
+        }
+    }
 }
 
-var setA = new Set()
+var clienteA = new Set()
 
-setA.add(1)
-setA.add(2)
-setA.add(3)
-setA.add(4)
+clienteA.add(1)
+clienteA.add(2)
+clienteA.add(3)
+clienteA.add(4)
 
-var setB = new Set()
+var clienteB = new Set()
 
-setB.add(0)
-setB.add(1)
-setB.add(3)
-setB.add(5)
+clienteB.add(0)
+clienteB.add(1)
+clienteB.add(3)
+clienteB.add(5)
 
 
-var unionAB = setA.union(setB)
+var intersectionAB = clienteA.intersection(clienteB)
 
-console.log(unionAB.values())
+console.log(intersectionAB.values())
+
+var diferenceAB = clienteA.diference(clienteB)
+
+console.log(diferenceAB.values())
+
+
+console.log(clienteA.subset(clienteB))
 
